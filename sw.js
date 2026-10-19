@@ -1,7 +1,7 @@
 // Petit « service worker » : permet d'installer FC27 Companion comme une appli et de l'ouvrir sans connexion.
 // Règle simple et sûre : on demande TOUJOURS la version en ligne d'abord (donc jamais de vieux prix quand on a du réseau).
 // Sans réseau seulement, on montre la dernière version enregistrée sur l'appareil.
-const CACHE = 'fc27-v3';
+const CACHE = 'fc27-v4';
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', (e) => {
   e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
